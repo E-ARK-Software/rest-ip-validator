@@ -2,13 +2,11 @@ package eu.dilcis.validator.server.app;
 
 import org.glassfish.jersey.server.validation.internal.ValidationExceptionMapper;
 
-import eu.dilcis.validator.rest.resources.HomePage;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import io.dropwizard.views.ViewBundle;
 
 /**
  * @author  <a href="mailto:carl@openpreservation.org">Carl Wilson</a>
@@ -43,20 +41,18 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
     @Override
     public void initialize(Bootstrap<ValidatorRestConfig> bootstrap) {
         // Dropwizard bundle to handle Jackson XML serialisation
-        bootstrap.addBundle(new MultiPartBundle());
-        bootstrap.addBundle(new ViewBundle<ValidatorRestConfig>());
-        bootstrap.addBundle(new AssetsBundle("/assets/css", "/css", null, "css")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        bootstrap.addBundle(new AssetsBundle("/assets/js", "/js", null, "js")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        bootstrap.addBundle(new AssetsBundle("/assets/img", "/img", null, "img")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-
+//        bootstrap.addBundle(new MultiPartBundle());
+//        bootstrap.addBundle(new AssetsBundle("/assets/css", "/css", null, "css")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+//        bootstrap.addBundle(new AssetsBundle("/assets/js", "/js", null, "js")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+//        bootstrap.addBundle(new AssetsBundle("/assets/img", "/img", null, "img")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-
+        bootstrap.addBundle(new AssetsBundle("/assets/", "/")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-
     }
 
     @Override
     public void run(ValidatorRestConfig configuration,
             Environment environment) {
         // Create & register our REST resources
-        final HomePage homePageResource = new HomePage();
         final ValidationExceptionMapper vem = new ValidationExceptionMapper();
-        environment.jersey().register(homePageResource);
         environment.jersey().register(vem);
         // Set up cross domain REST
         environment.jersey().register(CORSResponseFilter.class);
