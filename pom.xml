@@ -47,7 +47,7 @@
     <mvn.assembly.version>3.1.0</mvn.assembly.version>
     <mvn.clean.version>3.1.0</mvn.clean.version>
     <mvn.compiler.version>3.8.0</mvn.compiler.version>
-    <mvn.shade.version>3.8.0</mvn.shade.version>
+    <mvn.shade.version>3.1.1</mvn.shade.version>
     <mvn.javadoc.version>3.0.1</mvn.javadoc.version>
     <mvn.site.version>3.7.1</mvn.site.version>
     <mvn.source.version>3.0.1</mvn.source.version>
@@ -101,7 +101,7 @@
                   implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
                 <transformer
                   implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>org.verapdf.rest.app.VeraPdfRestApplication</mainClass>
+                  <mainClass>eu.dilcis.validator.server.app.ValidatorRestApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>

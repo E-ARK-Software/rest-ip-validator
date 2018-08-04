@@ -1,4 +1,4 @@
-package eu.dilcis.validator.server.views;
+package eu.dilcis.validator.client.views;
 
 import java.nio.charset.Charset;
 
@@ -17,7 +17,7 @@ public class RestClientView extends View {
 	 * @param templateName
 	 */
 	public RestClientView() {
-		this("restclient.mustache");
+		this("restclient.mustache"); //$NON-NLS-1$
 	}
 
 	/**

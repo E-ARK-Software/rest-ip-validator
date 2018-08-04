@@ -2,8 +2,7 @@ package eu.dilcis.validator.server.app;
 
 import org.glassfish.jersey.server.validation.internal.ValidationExceptionMapper;
 
-import com.yunspace.dropwizard.xml.XmlBundle;
-
+import eu.dilcis.validator.rest.resources.HomePage;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.forms.MultiPartBundle;
@@ -44,8 +43,6 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
     @Override
     public void initialize(Bootstrap<ValidatorRestConfig> bootstrap) {
         // Dropwizard bundle to handle Jackson XML serialisation
-        final XmlBundle xmlBundle = new XmlBundle();
-        bootstrap.addBundle(xmlBundle);
         bootstrap.addBundle(new MultiPartBundle());
         bootstrap.addBundle(new ViewBundle<ValidatorRestConfig>());
         bootstrap.addBundle(new AssetsBundle("/assets/css", "/css", null, "css")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -57,11 +54,9 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
     public void run(ValidatorRestConfig configuration,
             Environment environment) {
         // Create & register our REST resources
-//        final ApiResource restApi = new ApiResource();
-//        final HomePageResource homePageResource = new HomePageResource();
+        final HomePage homePageResource = new HomePage();
         final ValidationExceptionMapper vem = new ValidationExceptionMapper();
-//        environment.jersey().register(restApi);
-//        environment.jersey().register(homePageResource);
+        environment.jersey().register(homePageResource);
         environment.jersey().register(vem);
         // Set up cross domain REST
         environment.jersey().register(CORSResponseFilter.class);
