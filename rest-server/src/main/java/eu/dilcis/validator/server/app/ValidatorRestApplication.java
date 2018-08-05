@@ -4,7 +4,6 @@ import org.glassfish.jersey.server.validation.internal.ValidationExceptionMapper
 
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
-import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -13,7 +12,7 @@ import io.dropwizard.setup.Environment;
  *          <a href="https://github.com/carlwilson">carlwilson AT github</a>
  *
  * @version 0.1
- * 
+ *
  * Created 2 Aug 2018:16:20:27
  */
 
@@ -23,7 +22,7 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
     /**
      * Main method for Jetty server application. Simply calls the run method
      * with command line args.
-     * 
+     *
      * @param args
      *            command line arguments as string array.
      * @throws Exception
@@ -40,12 +39,8 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
 
     @Override
     public void initialize(Bootstrap<ValidatorRestConfig> bootstrap) {
-        // Dropwizard bundle to handle Jackson XML serialisation
-//        bootstrap.addBundle(new MultiPartBundle());
-//        bootstrap.addBundle(new AssetsBundle("/assets/css", "/css", null, "css")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-//        bootstrap.addBundle(new AssetsBundle("/assets/js", "/js", null, "js")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-//        bootstrap.addBundle(new AssetsBundle("/assets/img", "/img", null, "img")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-
-        bootstrap.addBundle(new AssetsBundle("/assets/", "/")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-
+        // Dropwizard assets bundle to map static resources
+        bootstrap.addBundle(new AssetsBundle("/assets/", "/")); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     @Override
