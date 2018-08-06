@@ -37,6 +37,10 @@
       <id>jcenter</id>
       <url>http://jcenter.bintray.com</url>
     </repository>
+    <repository>
+      <id>keeps_artifactory</id>
+      <url>http://artifactory.keep.pt/keep</url>
+    </repository>
   </repositories>
 
   <properties>

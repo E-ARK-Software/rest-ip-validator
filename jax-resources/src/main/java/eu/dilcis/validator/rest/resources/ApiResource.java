@@ -19,13 +19,19 @@ public final class ApiResource {
 		super();
 	}
 
-
     /**
      * @return a new {@link ByteStreamResource}
      */
     @Path("/bytes/")
-    public static ByteStreamResource getSha1() {
+    public static ByteStreamResource byteResources() {
         return new ByteStreamResource();
     }
 
+    /**
+     * @return a new {@link ByteStreamResource}
+     */
+    @Path("/validate/")
+    public static ValidationResource validationResources() {
+        return new ValidationResource();
+    }
 }

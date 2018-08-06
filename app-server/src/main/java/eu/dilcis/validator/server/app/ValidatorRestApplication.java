@@ -54,6 +54,7 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
         final ValidationExceptionMapper vem = new ValidationExceptionMapper();
         environment.jersey().register(restApi);
         environment.jersey().register(vem);
+        environment.jersey().register(new HttpValidationExceptionMapper());
         // Set up cross domain REST
         environment.jersey().register(CORSResponseFilter.class);
     }
