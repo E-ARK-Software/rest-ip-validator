@@ -25,18 +25,23 @@
         <label for="digest">Package SHA-1: </label>
         <input id="digest" type="text" class="form-control"  placeholder="SHA-1 hash of selected file." readonly >
       </div>
-      <button type="submit" class="btn btn-primary" disabled >Submit</button>
+      <button type="button" class="btn btn-primary" disabled >Submit</button>
     </form>
 
   </div>
+
+  <!-- Load the JavaScript bulk last -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <!-- Here be poppers -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!-- Client side SHA-1 calculation -->
+  <!-- Client glue code to handle page events -->
   <script src="/js/rest-client.js"></script>
+  <!-- Client side SHA-1 calculation -->
   <script src="/js/sha1.js"></script>
+  <!-- JQuery AJAX wrapping of validtion REST services -->
+  <script src="/js/ip-validation.js"></script>
 </body>
 </html>
