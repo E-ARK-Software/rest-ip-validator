@@ -2,8 +2,10 @@ package eu.dilcis.validator.server.app;
 
 import org.glassfish.jersey.server.validation.internal.ValidationExceptionMapper;
 
+import eu.dilcis.validator.rest.resources.ApiResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -39,6 +41,7 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
 
     @Override
     public void initialize(Bootstrap<ValidatorRestConfig> bootstrap) {
+        bootstrap.addBundle(new MultiPartBundle());
         // Dropwizard assets bundle to map static resources
         bootstrap.addBundle(new AssetsBundle("/assets/", "/")); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -46,8 +49,10 @@ public class ValidatorRestApplication extends Application<ValidatorRestConfig> {
     @Override
     public void run(ValidatorRestConfig configuration,
             Environment environment) {
+        final ApiResource restApi = new ApiResource();
         // Create & register our REST resources
         final ValidationExceptionMapper vem = new ValidationExceptionMapper();
+        environment.jersey().register(restApi);
         environment.jersey().register(vem);
         // Set up cross domain REST
         environment.jersey().register(CORSResponseFilter.class);

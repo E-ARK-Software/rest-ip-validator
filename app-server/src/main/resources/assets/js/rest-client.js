@@ -57,5 +57,7 @@ function calcFileSha1(file) {
 * Render the validation result to screen
 */
 function renderResult() {
-  console.log("Render")
+  $("#results").empty();
+  var preBlock = $("<pre>").text(ipValidator.result);
+  $("#results").append(preBlock);
 }
