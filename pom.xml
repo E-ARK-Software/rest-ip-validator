@@ -220,7 +220,7 @@
   </reporting>
 
   <modules>
-    <module>rest-services</module>
-    <module>rest-server</module>
+    <module>app-server</module>
+    <module>jax-resources</module>
   </modules>
 </project>
