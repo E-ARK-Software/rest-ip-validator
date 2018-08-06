@@ -23,7 +23,7 @@ public final class ApiResource {
     /**
      * @return a new {@link ByteStreamResource}
      */
-    @Path("/sha1")
+    @Path("/bytes/")
     public static ByteStreamResource getSha1() {
         return new ByteStreamResource();
     }

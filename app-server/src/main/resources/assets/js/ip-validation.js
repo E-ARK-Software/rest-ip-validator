@@ -6,7 +6,7 @@ var ipValidator = {
   status : null,
   validate : function (formData, callback, contentType = 'text') {
     $.ajax({
-      url         : 'api/sha1',
+      url         : 'api/validate/',
       type        : 'POST',
       data        : formData,
       dataType    : contentType,
