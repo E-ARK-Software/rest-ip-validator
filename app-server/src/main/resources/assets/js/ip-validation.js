@@ -4,7 +4,7 @@
 var ipValidator = {
   result : null,
   status : null,
-  validate : function (formData, callback, contentType = 'text') {
+  validate : function (formData, callback, contentType = 'json') {
     $.ajax({
       url         : 'api/validate/',
       type        : 'POST',
@@ -13,7 +13,8 @@ var ipValidator = {
       contentType : false,
       processData : false,
       success     : function (data, textStatus, jqXHR) {
-        ipValidator.result = jqXHR.responseText;
+        console.log(jqXHR);
+        ipValidator.result = data;
         callback();
       },
       // HTTP Error handler

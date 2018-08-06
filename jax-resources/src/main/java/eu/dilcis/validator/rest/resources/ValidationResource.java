@@ -59,7 +59,7 @@ public class ValidationResource {
             @FormDataParam("file") final FormDataContentDisposition contentDispositionHeader) throws ParseException, IOException {
         MessageDigest sha1 = getDigest();
         DigestInputStream dis = new DigestInputStream(uploadedInputStream, sha1);
-        SIP sip = EARKSIP.parse(inputToTempPath(uploadedInputStream));
+        SIP sip = EARKSIP.parse(inputToTempPath(dis));
         return sip.getValidationReport();
     }
 

@@ -58,6 +58,29 @@ function calcFileSha1(file) {
 */
 function renderResult() {
   $("#results").empty();
-  var preBlock = $("<pre>").text(ipValidator.result);
-  $("#results").append(preBlock);
+  $("#results").append($("<h2>").text("Validation Result"));
+  var transforms = {
+    "status" : {
+      "<>"    : "div",
+      "html"  : [
+        {
+          "<>"    : "div",
+          "text"  : function(obj, index) {var date = new Date(obj.date); return "Date:" + date.toUTCString();}
+        },
+        {
+          "<>"    : "div",
+          "class" : function(obj, index) {return "alert " + (obj.valid ? "alert-success" : "alert-danger");},
+          "text"  : "Validation Result: ${valid}"
+        }
+      ]
+    },
+    "entries" : {
+      "<>"    : "div",
+      "class" : function(obj, index) {return "alert " + (obj.level == "ERROR" ? "alert-danger" : "alert-warning");},
+      "text"  : function(obj, index) {return (index + 1) + ". " + obj.level + ": " + obj.message;}
+    }
+  };
+  $("#results").json2html(ipValidator.result, transforms.status);
+  $("#results").append($("<h3>").text("Validation Entries"));
+  $("#results").json2html(ipValidator.result.validationEntries, transforms.entries);
 }

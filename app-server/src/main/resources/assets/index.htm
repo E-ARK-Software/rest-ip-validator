@@ -13,25 +13,35 @@
 </head>
 <body>
   <div class="container">
+
     <h1>Submit IP for Validation</h1>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-8">
+        <h2>Choose file:</h2>
+        <form>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="file" name="file">
+            <label class="custom-file-label" for="file">Choose information packge to upload</label>
+          </div>
 
-    <form>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="file" name="file">
-        <label class="custom-file-label" for="file">Choose information packge to upload</label>
+          <div class="form-group">
+            <label for="digest">Package SHA-1: </label>
+            <input id="digest" type="text" class="form-control"  placeholder="SHA-1 hash of selected file." readonly >
+          </div>
+          <button type="button" class="btn btn-primary" disabled >Submit</button>
+        </form>
       </div>
+      <div class="col"></div>
+    </div><!-- end row -->
 
-      <div class="form-group">
-        <label for="digest">Package SHA-1: </label>
-        <input id="digest" type="text" class="form-control"  placeholder="SHA-1 hash of selected file." readonly >
+    <div class="row">
+      <div class="col">
+        <div id="results"></div>
       </div>
-      <button type="button" class="btn btn-primary" disabled >Submit</button>
-    </form>
+    </div><!-- end row -->
 
-  </div>
-
-  <div id="results" class="container">
-  </div>
+  </div><!-- end container -->
 
   <!-- Load the JavaScript bulk last -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -46,5 +56,8 @@
   <script src="/js/sha1.js"></script>
   <!-- JQuery AJAX wrapping of validtion REST services -->
   <script src="/js/ip-validation.js"></script>
+  <!-- JSON to HTML templating -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.json2html/1.2.0/jquery.json2html.min.js"></script>
 </body>
 </html>
