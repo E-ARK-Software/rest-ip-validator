@@ -76,7 +76,7 @@ function renderResult() {
     },
     "entries" : {
       "<>"    : "div",
-      "class" : function(obj, index) {return "alert " + (obj.level == "ERROR" ? "alert-danger" : "alert-warning");},
+      "class" : function(obj, index) {return "alert " + (obj.level === "ERROR" ? "alert-danger" : obj.level === "WARNING" ? "alert-warning" : "alert-info");},
       "text"  : function(obj, index) {return (index + 1) + ". " + obj.level + ": " + obj.message;}
     }
   };
